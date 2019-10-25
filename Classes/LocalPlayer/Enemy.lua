@@ -60,7 +60,7 @@ end
 
 function LocalPlayer:AutoTargetAny(Yards, Facing)
     Facing = Facing or false
-    if not self.Target or self.Target.Dead then
+    if not self.Target or self.Target.Dead and not CreatureType == "Critter" then
         for _, Unit in ipairs(DMW.Attackable) do
             if Unit.Distance <= Yards and (not Facing or Unit.Facing) and not Unit.Dead and not Unit.Target and not UnitIsTapDenied(Unit.Pointer) then
                 TargetUnit(Unit.Pointer)
